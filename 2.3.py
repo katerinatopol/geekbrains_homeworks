@@ -19,12 +19,12 @@ while True:
     except ValueError:
         print("Это не число, попробуйте еше раз")
     else:
-        break
+        for i in range(len(seasons_ls)):
+            if user_answer in seasons_ls[i]:
+                print(f"{user_answer} месяц относится к времени года: {seasons_ls[i][0]}")
+                break
 
-for i in range(len(seasons_ls)):
-    if user_answer in seasons_ls[i]:
-        print(f"{user_answer} месяц относится к времени года: {seasons_ls[i][0]}")
-        break
+
 
 
 # Решение через dict
