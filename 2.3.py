@@ -3,6 +3,32 @@
 Сообщить к какому времени года относится месяц (зима, весна, лето, осень).
 Напишите решения через list и через dict.
 '''
+# Решение через list
+seasons_ls = [
+    ["зима", 12, 1, 2],
+    ["весна", 3, 4, 5],
+    ["лето", 6, 7, 8],
+    ["осень", 9, 10, 11]
+]
+while True:
+    try:
+        user_answer = int(input("Введите месяц в виде целого числа от 1 до 12: "))
+        if user_answer > 12 or user_answer < 1:
+            print("Такого месяца не существует, попробуйте еще раз")
+            continue
+    except ValueError:
+        print("Это не число, попробуйте еше раз")
+    else:
+        break
+
+for i in range(len(seasons_ls)):
+    for j in range(len(seasons_ls[i])):
+        if seasons_ls[i][j] == user_answer:
+            print(f"{user_answer} месяц относится к времени года: {seasons_ls[i][0]}")
+            break
+
+
+# Решение через dict
 seasons = {
     1: "зима",
     2: "зима",
@@ -20,12 +46,14 @@ seasons = {
 while True:
     try:
         user_answer = int(input("Введите месяц в виде целого числа от 1 до 12: "))
-        if user_answer > 12 or user_answer < 1:
-            print("Такого месяца не существует, попробуйте еще раз")
-            continue
-    except ValueError as err:
+    except ValueError:
         print("Это не число, попробуйте еше раз")
     else:
-        break
+        try:
+            # ???? почему не работает такая запись: seasons.get(user_answer) выводит None не смотря на except. Он не считает KeyError если есть None?
+            print(f"{user_answer} месяц относится к времени года: {seasons[user_answer]}")
+            break
+        except KeyError:
+            print("Такого месяца не существует, попробуйте еще раз")
 
-print(f"{user_answer} месяц относится к времени года: {seasons.get(user_answer)}")
+

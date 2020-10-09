@@ -11,7 +11,7 @@
 while True:
     try:
         my_list = [int(i) for i in input("Введите несколько чисел через пробел: ").split(" ")]
-    except ValueError as err:
+    except ValueError:
         print("Это не числа, попробуйте еше раз")
     else:
         break
