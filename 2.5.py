@@ -18,12 +18,20 @@ while True:
             print("Конец цикла")
             break
         else:
-            my_list.append(int(el))
-            my_list.sort()
-            my_list.reverse()
+            el = int(el)
+            if el in my_list:
+                my_list.reverse()
+                my_list.insert(my_list.index(el), el)
+                my_list.reverse()
+            else:
+                my_list.append(el)
+                my_list.sort()
+                my_list.reverse()
+
     except ValueError:
         print("Это не число, попробуйте еше раз")
         continue
+
 
 
 
