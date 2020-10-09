@@ -22,10 +22,9 @@ while True:
         break
 
 for i in range(len(seasons_ls)):
-    for j in range(len(seasons_ls[i])):
-        if seasons_ls[i][j] == user_answer:
-            print(f"{user_answer} месяц относится к времени года: {seasons_ls[i][0]}")
-            break
+    if user_answer in seasons_ls[i]:
+        print(f"{user_answer} месяц относится к времени года: {seasons_ls[i][0]}")
+        break
 
 
 # Решение через dict
