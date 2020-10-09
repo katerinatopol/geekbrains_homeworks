@@ -24,9 +24,6 @@ while True:
                 print(f"{user_answer} месяц относится к времени года: {seasons_ls[i][0]}")
                 break
 
-
-
-
 # Решение через dict
 seasons = {
     1: "зима",
