@@ -10,7 +10,7 @@
 # Если хотим чтобы пользователь вводил строго числа:
 while True:
     try:
-        my_list = [int(i) for i in input("Введите несколько чисел через пробел: ").split(" ")]
+        my_list = [int(i) for i in input("Введите несколько чисел через пробел: ").split()]
     except ValueError:
         print("Это не числа, попробуйте еше раз")
     else:
