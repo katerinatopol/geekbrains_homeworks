@@ -3,29 +3,21 @@
 Сообщить к какому времени года относится месяц (зима, весна, лето, осень).
 Напишите решения через list и через dict.
 '''
-# Решение через list
-seasons_ls = [
-    ["зима", 12, 1, 2],
-    ["весна", 3, 4, 5],
-    ["лето", 6, 7, 8],
-    ["осень", 9, 10, 11]
+seasons_list = [
+    "winter",
+    "winter",
+    "spring",
+    "spring",
+    "spring",
+    "summer",
+    "summer",
+    "summer",
+    "autumn",
+    "autumn",
+    "autumn",
+    "winter"
 ]
-while True:
-    try:
-        user_answer = int(input("Введите месяц в виде целого числа от 1 до 12: "))
-        if user_answer > 12 or user_answer < 1:
-            print("Такого месяца не существует, попробуйте еще раз")
-            continue
-    except ValueError:
-        print("Это не число, попробуйте еше раз")
-    else:
-        for i in range(len(seasons_ls)):
-            if user_answer in seasons_ls[i]:
-                print(f"{user_answer} месяц относится к времени года: {seasons_ls[i][0]}")
-                break
-
-# Решение через dict
-seasons = {
+seasons_dict = {
     1: "зима",
     2: "зима",
     3: "весна",
@@ -41,15 +33,15 @@ seasons = {
 }
 while True:
     try:
-        user_answer = int(input("Введите месяц в виде целого числа от 1 до 12: "))
-    except ValueError:
-        print("Это не число, попробуйте еше раз")
-    else:
-        try:
-            # ???? почему не работает такая запись: seasons.get(user_answer) выводит None не смотря на except. Он не считает KeyError если есть None?
-            print(f"{user_answer} месяц относится к времени года: {seasons[user_answer]}")
-            break
-        except KeyError:
-            print("Такого месяца не существует, попробуйте еще раз")
+        month = int(input("Введите месяц в виде целого числа от 1 до 12: "))
+        print(f"{month} месяц относится к времени года (согласно list): {seasons_list[month - 1]}")
+        print(f"{month} месяц относится к времени года (согласно dict): {seasons_dict[month]}")
+        break
+    except ValueError as err:
+        print("Это не число, попробуйте еше раз", err)
+    except KeyError as err:
+        print(f"Такого месяца {err} не существует, попробуйте еще раз")
+    except IndexError as err:
+        print("Такого месяца не существует, попробуйте еще раз", err)
 
-
+# except KeyError или IndexError возникает в зависимости от того, какая строка в print стоит первой. Какое исключение возникло первым, то и обработалось.

@@ -19,17 +19,15 @@ while True:
             break
         else:
             el = int(el)
-            if el in my_list:
-                my_list.reverse()
-                my_list.insert(my_list.index(el), el)
-                my_list.reverse()
-            else:
-                my_list.append(el)
-                my_list.sort()
-                my_list.reverse()
+            i = 0
+            for n in my_list:
+                if el <= n:
+                    i += 1
+            my_list.insert(i, el)
+            print(my_list)
 
-    except ValueError:
-        print("Это не число, попробуйте еше раз")
+    except ValueError as err:
+        print("Это не число, попробуйте еше раз", err)
         continue
 
 

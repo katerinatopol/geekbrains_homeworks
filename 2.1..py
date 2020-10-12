@@ -6,7 +6,7 @@
 '''
 
 my_list = [3, 3.4, 3 + 7j, 'string', [1, 2, 3], (1, 2), {1, 2, 3}, {'key_1': 'value_1', 'key_2': 'value_2'}, True, b'b',
-           bytearray(b'hello world!'), None]
+           bytearray(b'hello world!'), None, ValueError()]
 
 for i in my_list:
     print(f"Тип элемента {i} : {type(i)}")

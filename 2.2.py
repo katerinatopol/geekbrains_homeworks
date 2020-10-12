@@ -26,3 +26,19 @@ for i in range(len(my_list))[::2]:
 
 
 print(f"Теперь он выглядит так {my_list}")
+
+# улучшение варианта с range:
+for i in range(1, len(my_list), 2):
+        my_list[i - 1], my_list[i] = my_list[i], my_list[i - 1]
+
+
+print(f"Поворот {my_list}")
+
+# Вариант с while (range лучше по памяти)
+i = 0
+while i + 1 < len(my_list):
+    if i % 2 == 0:
+        elem = my_list.pop(i + 1)
+        my_list.insert(i, elem)
+    i += 1
+print(f"И в обратную сторону {my_list}")

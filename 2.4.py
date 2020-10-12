@@ -7,3 +7,10 @@ my_string = input("Введите несколько слов, разделяя 
 
 for ind, el in enumerate(my_string, 1):
     print(ind, el[:10]) # от 0 до 10 не включительно
+
+# Другой вариант
+
+i = 1
+for x in my_string:
+    print(f"{i}-е слово: {x[:10]}")
+    i += 1
