@@ -9,9 +9,7 @@
 
 
 def int_func(user_answer):
-    for i in range(len(user_answer)):
-        user_answer[i] = user_answer[i].capitalize()
-    return " ".join(user_answer)
+    return " ".join(map(str.capitalize, user_answer))
 
 
 print(int_func(user_answer=input("Enter words separated by a space: ").split()))
