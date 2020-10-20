@@ -6,9 +6,7 @@
 with open("for5.2.txt", "r") as f_obj:
     count_lines = len(f_obj.readlines())
     print(f"The document has {count_lines} lines")
-
-
-with open("for5.2.txt", "r") as f_obj:
+    f_obj.seek(0)
     line_number = 0
     for line in f_obj:
         line_number += 1
