@@ -31,22 +31,28 @@ class OrganicCage:
         self.quantity = quantity
 
     def __add__(self, other):
-        global new_big_cage
-        new_big_cage = OrganicCage(self.quantity + other.quantity)
-        return f"создана new_big_cage, число клеток: {new_big_cage.quantity}"
+        new_cage_quantity = self.quantity + other.quantity
+        self.quantity = None
+        other.quantity = None
+        print(f"Клетки объединились в новую клетку, количество ячеек: {new_cage_quantity}")
+        return OrganicCage(new_cage_quantity)
 
     def __sub__(self, other):
         return f"результат вычитания клеток: {self.quantity - other.quantity}" if (self.quantity - other.quantity) > 0 else 'Error'
 
     def __mul__(self, other):
-        global new_very_big_cage
-        new_very_big_cage = OrganicCage(self.quantity * other.quantity)
-        return f"создана new_very_big_cage, число клеток: {new_very_big_cage.quantity}"
+        new_cage_quantity = self.quantity * other.quantity
+        self.quantity = None
+        other.quantity = None
+        print(f"Клетки объединились в новую клетку, количество ячеек: {new_cage_quantity}")
+        return OrganicCage(new_cage_quantity)
 
     def __truediv__(self, other):
-        global new_small_cage
-        new_small_cage = OrganicCage(round(self.quantity // other.quantity))
-        return f"создана new_small_cage, число клеток: {new_small_cage.quantity}"
+        new_cage_quantity = round(self.quantity // other.quantity)
+        self.quantity = None
+        other.quantity = None
+        print(f"Клетки объединились в новую клетку, количество ячеек: {new_cage_quantity}")
+        return OrganicCage(new_cage_quantity)
 
     def make_order(self, row):
         return (self.quantity // row) * (row * '*' + '\n') + (self.quantity % row) * '*'
@@ -54,11 +60,18 @@ class OrganicCage:
 
 cage_1 = OrganicCage(11)
 cage_2 = OrganicCage(8)
+cage_3 = OrganicCage(13)
+cage_4 = OrganicCage(21)
+cage_5 = OrganicCage(2)
 
 print(cage_1.make_order(5))
 
-print(cage_1 + cage_2)
-print(cage_2 - cage_1)
-print(new_big_cage - cage_2)
-print(cage_2 * cage_1)
-print(new_big_cage / cage_2)
+cage_6 = cage_1 + cage_2
+print(cage_6.quantity) # новая клетка
+print(cage_1.quantity) # уже пустая
+
+print(cage_6 - cage_3)
+print(cage_6 - cage_4)
+
+cage_7 = cage_3 * cage_4
+cage_8 = cage_7 / cage_5
