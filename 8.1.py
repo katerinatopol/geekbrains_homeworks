@@ -20,45 +20,46 @@ class Date:
     def validation(date):
         day, month, year = Date.to_int(date)
         if year > 0:                                       # год положительное число
-            if month in range(3, 13) or month == 1:        # все месяцы кроме февраля
+            if month != 2:        # все месяцы кроме февраля
                 if month in list([1, 3, 5, 7, 8, 10, 12]): # месяцы где 31 день
-                    if day in range(1, 32):
-                        return 'Data valid'
-                    else:
-                        return 'Day not valid'
+                    if day not in range(1, 32):
+                        raise ValueError('Day not valid')
                 elif month in list([4, 6, 9, 11]):          # месяцы где 30 дней
-                    if day in range(1, 31):
-                        return 'Data valid'
-                    else:
-                        return 'Day not valid'
-            elif month == 2:                                              # февраль
-                if year % 4 != 0 or year % 100 == 0 and year % 400 != 0:  # проверка на високосный год
-                    if day in range(1, 29):
-                        return 'Data valid'
-                    else:
-                        return 'Day not valid'
+                    if day not in range(1, 31):
+                        raise ValueError('Day not valid')
                 else:
-                    if day in range(1, 30):
-                        return 'Data valid'
-                    else:
-                        return 'Day not valid'
-            else:
-                return 'Month not valid'
+                    raise ValueError('Month not valid')
+            elif month == 2:                                              # февраль
+                if Date.leap_year(year):  # проверка на високосный год
+                    if day not in range(1, 29):
+                        raise ValueError('Day not valid')
+                else:
+                    if day not in range(1, 30):
+                        raise ValueError('Day not valid')
         else:
-            return 'Year not valid'
+            raise ValueError('Year not valid')
+        return 'Data valid'
+
+    @staticmethod
+    def leap_year(year):
+        if year % 4 != 0 or year % 100 == 0 and year % 400 != 0:
+            return False
+        else:
+            return True
+
 
 
 one_obj = Date('29-2-2020')
 print(one_obj.validation('29-2-2020'))
 
-two_obj = Date('29-2-2019')
-print(one_obj.validation('29-2-2019'))
-
-three_obj = Date('29-2-1944')
-print(one_obj.validation('29-2-1944'))
-
-four_obj = Date('29-14-2020')
-print(one_obj.validation('29-14-2020'))
-
-five_obj = Date('34-8-2020')
-print(one_obj.validation('34-8-2020'))
+# two_obj = Date('29-2-2019')
+# print(two_obj.validation('29-2-2019'))
+#
+# three_obj = Date('29-2-1944')
+# print(three_obj.validation('29-2-1944'))
+#
+# four_obj = Date('29-14-2020')
+# print(four_obj.validation('29-14-2020'))
+#
+# five_obj = Date('34-8-2020')
+# print(five_obj.validation('34-8-2020'))

@@ -8,20 +8,24 @@
 class ComplexNumber:
 
     def __init__(self, re, im):
-        self.complex = complex(re, im)
+        self.re = re
+        self.im = im
 
     def __str__(self):
-        return f'{self.complex}'
+        znak = ''
+        if self.im > 0:
+            znak = '+'
+        return f'{self.re}{znak}{self.im}*j'
 
     def __add__(self, other):
-        return self.complex + other.complex
+        return ComplexNumber(self.re + other.re, self.im + other.im)
 
     def __mul__(self, other):
-        return self.complex * other.complex
+        return ComplexNumber(self.re * other.re - self.im * other.im, self.re * other.im + self.im * other.re)
 
 
 one_number = ComplexNumber(3, 4)
-two_number = ComplexNumber(2, 7)
+two_number = ComplexNumber(2, -7)
 print(one_number)
 print(two_number)
 print(f'{one_number} + {two_number} = {one_number + two_number}')
