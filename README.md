@@ -1,1 +1,1 @@
-:house: Домашняя работа к курсу "Основы Python" GeekBrains
+# Домашняя работа к курсу "Основы Python" GeekBrains
